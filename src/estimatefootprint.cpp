@@ -61,10 +61,18 @@ void EstimateFootPrint::warping()
 
 void EstimateFootPrint::merging()
 {
-    cv::Mat mask1 = cv::imread("mask-left-side.jpg");
-    cv::Mat mask2 = cv::imread("mask-right-side.jpg");
+    cv::Mat warp1 = cv::imread("Warped1.jpg", cv::IMREAD_GRAYSCALE);
+    cv::Mat warp2 = cv::imread("Warped2.jpg", cv::IMREAD_GRAYSCALE);
+    double thresh = 127;
+    double maxValue = 255;
+    cv::Mat mask1;
+    cv::threshold(warp1, mask1, thresh, maxValue, cv::THRESH_BINARY_INV);
+    cv::imwrite("Mask1.jpg",mask1);
+    cv::Mat mask2;
+    cv::threshold(warp2, mask2, thresh, maxValue, cv::THRESH_BINARY_INV);
+    cv::imwrite("Mask2.jpg",mask2);
+    //cv::waitKey();
     cv::Mat merge;
     cv::bitwise_and(mask1,mask2,merge);
     cv::imwrite("merge.jpg",merge);
-    
 }
