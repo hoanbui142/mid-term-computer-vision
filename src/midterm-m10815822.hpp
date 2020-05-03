@@ -17,5 +17,5 @@ public:
     void readCoords();
     void warping();
     void merging();
-    //void exportSizeFootprint();
+    void exportSizeFootprint();
 };

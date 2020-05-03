@@ -6,6 +6,7 @@ int main(int argc, char const *argv[])
     twoviews.readCoords();
     twoviews.warping();
     twoviews.merging();
+    twoviews.exportSizeFootprint();
 
     return 0;
 }
